@@ -2,6 +2,7 @@
 /* 
     Dreamcast Companion App
 */
+#include <Arduino.h>
 #include "global.h"
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
@@ -115,6 +116,34 @@ InfoTask infoTask(16);
 extern Menu mainMenu;
 Menu *currentMenu;
 Menu *previousMenu;
+
+//////////////////////////////////////////////////////////////////////////////////
+
+void setupSPIFFS();
+void setupResetMode();
+void setupOutputResolution();
+void setupScanlines();
+void setupOffsets();
+void setupUpscalingMode();
+void setupColorExpansionAndGamma();
+void setupColorSpace();
+void setupTaskManager();
+void setupCredentials(void);
+void generateWiFiPassword();
+void setupAPMode(void);
+void setupWiFi();
+void setupWiFiStation();
+void setupMDNS();
+void setupHTTPServer();
+void setupArduinoOTA();
+void waitForController();
+void doReflash();
+void printSerialMenu();
+void setup(void);
+void showInfo();
+int getWiFiQuality(int dBm);
+void toBinaryString(char* msg, uint8_t* a, int len);
+void setColorMode();
 
 //////////////////////////////////////////////////////////////////////////////////
 
