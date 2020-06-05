@@ -7,8 +7,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 #define DBG_OUTPUT_PORT Serial
-//#define DEBUG(...) DBG_OUTPUT_PORT.printf(__VA_ARGS__)
-#define DEBUG(...) void(0)
+#define DEBUG(...) DBG_OUTPUT_PORT.printf(__VA_ARGS__)
+//#define DEBUG(...) void(0)
 #define DEBUG1(...) DBG_OUTPUT_PORT.printf(__VA_ARGS__)
 //#define DEBUG2(...) DBG_OUTPUT_PORT.printf(__VA_ARGS__)
 #define DEBUG2(_1, ...) DBG_OUTPUT_PORT.printf_P(PSTR(_1), ##__VA_ARGS__)
@@ -22,7 +22,7 @@
 #define DEFAULT_FW_SERVER_PATH ""
 #define DEFAULT_FW_VERSION "master"
 #define DEFAULT_FW_VARIANT FIRMWARE_STANDARD_FLAVOUR
-#define DEFAULT_HTTP_USER "dchdmi"
+#define DEFAULT_HTTP_USER ""
 #define DEFAULT_HTTP_PASS ""
 #define DEFAULT_CONF_IP_ADDR ""
 #define DEFAULT_CONF_IP_GATEWAY ""

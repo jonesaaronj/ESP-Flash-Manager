@@ -46,7 +46,7 @@ char firmwareServerPath[256] = DEFAULT_FW_SERVER_PATH;
 char firmwareVersion[64] = DEFAULT_FW_VERSION;
 char firmwareVariant[64] = DEFAULT_FW_VARIANT;
 char httpAuthUser[64] = DEFAULT_HTTP_USER;
-char httpAuthPass[64] = "";
+char httpAuthPass[64] = "abc";
 char confIPAddr[24] = DEFAULT_CONF_IP_ADDR;
 char confIPGateway[24] = DEFAULT_CONF_IP_GATEWAY;
 char confIPMask[24] = DEFAULT_CONF_IP_MASK;
@@ -233,7 +233,7 @@ void setupColorSpace() {
 void setupTaskManager() {
     DEBUG2(">> Setting up task manager...\n");
     taskManager.Setup();
-    taskManager.StartTask(&fpgaTask);
+    // taskManager.StartTask(&fpgaTask);
 }
 
 void setupCredentials(void) {
@@ -1149,25 +1149,25 @@ void setup(void) {
     setupI2C();
     setupSPIFFS();
     setupResetMode();
-    setupOutputResolution();
-    setupScanlines();
-    setupOffsets();
-    setupUpscalingMode();
-    setupColorSpace();
-    setupColorExpansionAndGamma();
-    setupTaskManager();
+    //setupOutputResolution();
+    //setupScanlines();
+    //setupOffsets();
+    //setupUpscalingMode();
+    //setupColorSpace();
+    //setupColorExpansionAndGamma();
+    //setupTaskManager();
     setupCredentials();
-    waitForController();
-    fpgaTask.Write(I2C_ACTIVATE_HDMI, 1, NULL); fpgaTask.ForceLoop();
+    //waitForController();
+    //fpgaTask.Write(I2C_ACTIVATE_HDMI, 1, NULL); fpgaTask.ForceLoop();
     setupWiFi();
 
-    setOSD(false, NULL); fpgaTask.ForceLoop();
+    //setOSD(false, NULL); fpgaTask.ForceLoop();
     char buff[MENU_WIDTH+1]; osd_get_resolution(buff);
-    fpgaTask.DoWriteToOSD(0, MENU_WIDTH, (uint8_t*) buff); fpgaTask.ForceLoop();
+    //fpgaTask.DoWriteToOSD(0, MENU_WIDTH, (uint8_t*) buff); fpgaTask.ForceLoop();
 
     if (!inInitialSetupMode) {
         // skip MDNS setup, because it can cause random crashes on startup
-        //setupMDNS();
+        setupMDNS();
     }
 
     if (reflashNeccessary && reflashNeccessary2 && reflashNeccessary3) {
@@ -1178,7 +1178,7 @@ void setup(void) {
     DEBUG2(">> httpAuthUser: %s\n", httpAuthUser);
     DEBUG2(">> httpAuthPass: %s\n", httpAuthPass);
     DEBUG2(">> Ready.\n");
-    printSerialMenu();
+    //printSerialMenu();
 }
 
 void showInfo() {
@@ -1225,6 +1225,7 @@ void setColorMode() {
 void loop(void){
     ArduinoOTA.handle();
     taskManager.Loop();
+    /*
     if (Serial.available() > 0) {
         int incomingByte = Serial.read();
         if (incomingByte == 'f') {
@@ -1282,5 +1283,5 @@ void loop(void){
         } else {
             DEBUG2("DEBUG serial key: %u\n", incomingByte);
         }
-    }
+    }*/
 }
